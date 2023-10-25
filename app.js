@@ -16,7 +16,6 @@ document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault(); // Impedimos que el formulario haga un petición GET
 
   // Comprobar si el número que ha puesto el usuario es mayor o menor que el numeroCorrecto. Tomar decisiones
-
   if (isPlaying) {
     let userValueInput = +document.querySelector("#guessField").value;
     const info = document.querySelector(".lowOrHi");
@@ -35,6 +34,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
       document.querySelector("#guessField").disabled = true;
     }
 
+
     //Añadimos el número introducido por el usuario
     previousGuesses.push(userValueInput);
     numGuesses.textContent = previousGuesses.join(" - ");
@@ -42,12 +42,18 @@ document.querySelector("form").addEventListener("submit", (event) => {
     //Descontamos intentos
     remainingAttempts--;
 
+    //Comprovamos intentos y si no hemos adivinado el número
     if (remainingAttempts <= 0 && isPlaying) {
       info.textContent = `¡You have exhausted the number of attempts! The correct number is ${correctNumber}.`;
       isPlaying = false;
     }
 
     document.querySelector(".lastResult").textContent = remainingAttempts;
+
+     // Limpiar el input para que el usuario pueda ingresar otro número
+     document.querySelector("#guessField").value = ""; 
+
+
   } else {
     info.textContent = `End Game!`;
   }
