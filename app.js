@@ -42,7 +42,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
     //Descontamos intentos
     remainingAttempts--;
 
-    //Comprovamos intentos y si no hemos adivinado el número
+    //Comprobamos intentos y si no hemos adivinado el número
     if (remainingAttempts <= 0 && isPlaying) {
       info.textContent = `¡You have exhausted the number of attempts! The correct number is ${correctNumber}.`;
       isPlaying = false;
